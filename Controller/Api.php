@@ -19,7 +19,7 @@ use YaBandPay\Payment\Model\WechatPay;
 use YaBandPay\Api\Cryptography;
 use YaBandPay\Api\Notify;
 
-abstract class Api extends Controller
+abstract class Api extends Controller implements \Magento\Framework\App\CsrfAwareActionInterface
 {
     /**
      * Notify constructor.
@@ -50,4 +50,15 @@ abstract class Api extends Controller
         );
         return $notify->getOrderInfo();
     }
+
+    // 创建鉴权异常
+    public function createCsrfValidationException(RequestInterface $request ): ? InvalidRequestException { 
+        return null; 
+    }
+
+    // 鉴权
+    public function validateForCsrf(RequestInterface $request): ?bool {     
+        return true; 
+    }
+
 }
