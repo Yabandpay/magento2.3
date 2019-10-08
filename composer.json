@@ -1,6 +1,6 @@
 {
-  "name": "yabandpayment/magento2.2",
-  "description": "YaBand Payment Module for Magento 2",
+  "name": "yabandpayment/magento2.3",
+  "description": "YaBand Payment Module for Magento 2.3",
   "require": {
     "ext-json": "*",
     "yabandpayment/api": "^1.0"
