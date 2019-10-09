@@ -17,10 +17,13 @@ class Order
     public function toOptionArray()
     {
         $statuses = [
-            Payment::PAY_PENDING => Payment::PAY_PENDING,
-            Payment::PAY_PROCESSING => Payment::PAY_PROCESSING,
-            Payment::PAY_PAID => Payment::PAY_PAID,
-            Payment::PAY_COMPLETED => Payment::PAY_COMPLETED,
+            'pending' => 'Pending',
+            Payment::PAY_PROCESSING => 'Processing',
+            Payment::PAY_COMPLETED => 'Complete',
+            'closed' => 'Closed',
+            'canceled' => 'Canceled',
+            'holded' => 'On Hold',
+            'payment_review' => 'Payment Review',
         ];
 
         $options = [ [ 'value' => '', 'label' => __('-- Please Select --') ] ];
