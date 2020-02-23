@@ -30,7 +30,7 @@ class Success extends Api
                     'checkout/onepage/success?utm_nooverride=1'
                 );
             }else{
-                $this->_redirect('checkout/onepage/error?utm_nooverride=1&error=1');
+                $this->_redirect('');
             }
         }catch(\Exception $e){
             $this->yaBandWechatPayHelper->addTolog('error', 'Success Exception:' . $e->getMessage());
