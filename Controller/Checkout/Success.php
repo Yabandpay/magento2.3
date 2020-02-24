@@ -23,6 +23,7 @@ class Success extends Api
     {
         try{
             $orderInfo = $this->getOrderInfo();
+            $orderInfo['demo'] = json_decode($orderInfo['demo'],true);
             $this->yaBandWechatPayHelper->addTolog('info', 'Success:' . var_export($orderInfo, true));
             if(isset($orderInfo['state']) && $orderInfo['state'] === YaBandWechatPayHelper::PAY_PAID){
                 $this->paymentInstance->processTransaction($orderInfo);
@@ -30,7 +31,7 @@ class Success extends Api
                     'checkout/onepage/success?utm_nooverride=1'
                 );
             }else{
-                $this->_redirect('');
+                $this->_redirect('sales/order/view/order_id/'.$orderInfo['demo']['magento_order_id']);
             }
         }catch(\Exception $e){
             $this->yaBandWechatPayHelper->addTolog('error', 'Success Exception:' . $e->getMessage());
