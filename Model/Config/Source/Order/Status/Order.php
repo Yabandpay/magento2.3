@@ -18,6 +18,7 @@ class Order
     {
         $statuses = [
             'pending' => 'Pending',
+            'pending_payment' => 'Pending Payment',
             Payment::PAY_PROCESSING => 'Processing',
             Payment::PAY_COMPLETED => 'Complete',
             'closed' => 'Closed',
