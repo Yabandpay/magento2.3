@@ -28,39 +28,60 @@
                 <field id="alipay_desc" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Alipay Description</label>
                 </field>
-                <field id="ideal_active" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="ideal_active" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>iDeal Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="ideal_desc" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="ideal_desc" translate="label" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>iDeal Description</label>
                 </field>
-                <field id="pending_status" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="sofort_digital_active" translate="label" type="select" sortOrder="22" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Sofort Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sofort_digital_desc" translate="label" type="text" sortOrder="23" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sofort Description</label>
+                </field>
+                <!--<field id="sofort_physical_active" translate="label" type="select" sortOrder="24" showInDefault="1" showInWebsite="1" showInStore="0">-->
+                    <!--<label>Sofort/Physical Enabled</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+                <!--<field id="sofort_physical_desc" translate="label" type="text" sortOrder="28" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Sofort/Physical Description</label>-->
+                <!--</field>-->
+                <field id="bancontact_active" translate="label" type="select" sortOrder="29" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Bancontact Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="bancontact_desc" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bancontact Description</label>
+                </field>
+                <field id="pending_status" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>New Order Status</label>
                     <source_model>YaBandPay\Payment\Model\Config\Source\Order\Status\Order</source_model>
                 </field>
-                <field id="order_paid_status" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="order_paid_status" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Payment Completed Status</label>
                     <source_model>YaBandPay\Payment\Model\Config\Source\Order\Status\Order</source_model>
                 </field>
-                <field id="username" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="username" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>YaBand Account</label>
                 </field>
-                <field id="token" translate="label" type="password" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="token" translate="label" type="password" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>YaBand Token</label>
                 </field>
-                <field id="currency" translate="label" type="select" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="currency" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Currency</label>
                     <source_model>YaBandPay\Payment\Model\Config\Source\Currency</source_model>
                 </field>
-                <field id="fee" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="fee" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Fee(%)</label>
                 </field>
-                <field id="auto_send_email" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="auto_send_email" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Auto Send Email</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="auto_invoice" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="auto_invoice" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Auto Invoice</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>

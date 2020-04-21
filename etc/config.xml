@@ -59,6 +59,57 @@
                 <payment_action>authorize</payment_action>
                 <model>YaBandPay\Payment\Model\IDeal</model>
             </yabandpay_ideal>
+            <yabandpay_sofort_digital>
+                <debug>1</debug>
+                <active>1</active>
+                <payment_images>1</payment_images>
+                <order_status>pending_payment</order_status>
+                <order_status_pending>pending_payment</order_status_pending>
+                <order_status_processing>processing</order_status_processing>
+                <invoice_notify>1</invoice_notify>
+                <currency>1</currency>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_use_checkout>1</can_use_checkout>
+                <sort_order>1</sort_order>
+                <title>SofortDigital</title>
+                <payment_action>authorize</payment_action>
+                <model>YaBandPay\Payment\Model\SofortDigital</model>
+            </yabandpay_sofort_digital>
+            <yabandpay_sofort_physical>
+                <debug>1</debug>
+                <active>1</active>
+                <payment_images>1</payment_images>
+                <order_status>pending_payment</order_status>
+                <order_status_pending>pending_payment</order_status_pending>
+                <order_status_processing>processing</order_status_processing>
+                <invoice_notify>1</invoice_notify>
+                <currency>1</currency>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_use_checkout>1</can_use_checkout>
+                <sort_order>1</sort_order>
+                <title>SofortPhysical</title>
+                <payment_action>authorize</payment_action>
+                <model>YaBandPay\Payment\Model\SofortPhysical</model>
+            </yabandpay_sofort_physical>
+            <yabandpay_bancontact>
+                <debug>1</debug>
+                <active>1</active>
+                <payment_images>1</payment_images>
+                <order_status>pending_payment</order_status>
+                <order_status_pending>pending_payment</order_status_pending>
+                <order_status_processing>processing</order_status_processing>
+                <invoice_notify>1</invoice_notify>
+                <currency>1</currency>
+                <can_authorize>1</can_authorize>
+                <can_capture>1</can_capture>
+                <can_use_checkout>1</can_use_checkout>
+                <sort_order>1</sort_order>
+                <title>Bancontact</title>
+                <payment_action>authorize</payment_action>
+                <model>YaBandPay\Payment\Model\Bancontact</model>
+            </yabandpay_bancontact>
         </payment>
     </default>
 </config>

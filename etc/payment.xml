@@ -17,5 +17,14 @@
         <method name="yabandpay_ideal">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
+        <method name="yabandpay_sofort_digital">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
+        <method name="yabandpay_sofort_physical">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
+        <method name="yabandpay_bancontact">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
     </methods>
 </payment>
