@@ -28,6 +28,8 @@ use YaBandPay\Api\Request;
 use function implode;
 use function round;
 use function var_export;
+use YaBandPay\Payment\Model\IDeal;
+use YaBandPay\Payment\Model\WechatPay;
 
 /**
  * Class General
@@ -48,6 +50,8 @@ class General extends AbstractHelper
     const YABANDPAY_WECHATPAY_DESC = 'payment/' . self::MODULE_CODE . '/wechatpay_desc';
     const YABANDPAY_ALIPAY_ACTIVE = 'payment/' . self::MODULE_CODE . '/alipay_active';
     const YABANDPAY_ALIPAY_DESC = 'payment/' . self::MODULE_CODE . '/alipay_desc';
+    const YABANDPAY_IDEAL_ACTIVE = 'payment/' . self::MODULE_CODE . '/ideal_active';
+    const YABANDPAY_IDEAL_DESC = 'payment/' . self::MODULE_CODE . '/ideal_desc';
     const YABANDPAY_CURRENCY = 'payment/' . self::MODULE_CODE . '/currency';
     const YABANDPAY_FEE = 'payment/' . self::MODULE_CODE . '/fee';
     const YABANDPAY_AUTO_EMAIL = 'payment/' . self::MODULE_CODE . '/auto_send_email';
@@ -215,6 +219,16 @@ class General extends AbstractHelper
         return ' ' . $this->getStoreConfig(self::YABANDPAY_ALIPAY_DESC);
     }
 
+    public function getIsActiveiDeal()
+    {
+        return (bool)$this->getStoreConfig(self::YABANDPAY_IDEAL_ACTIVE);
+    }
+
+    public function getiDealPayDesc()
+    {
+        return ' ' . $this->getStoreConfig(self::YABANDPAY_IDEAL_DESC);
+    }
+
     public function getPayCurrency()
     {
         return $this->getStoreConfig(self::YABANDPAY_CURRENCY);
@@ -259,10 +273,20 @@ class General extends AbstractHelper
 
     public function getOrderPayUrl($paymentMethodCode, Order $order)
     {
-        if($paymentMethodCode === AliPay::CODE){
-            $paymentMethod = Payment::ALIPAY;
-        }else{
-            $paymentMethod = Payment::WECHAT;
+        switch ($paymentMethodCode) {
+            case AliPay::CODE:
+                $paymentMethod = Payment::ALIPAY;
+                break;
+            case WechatPay::CODE:
+                $paymentMethod = Payment::WECHAT;
+                break;
+            case IDeal::CODE:
+                $paymentMethod = Payment::IDEAL;
+                break;
+            default:
+                echo '不存在的支付方式CODE $paymentMethodCode = '.$paymentMethodCode;
+                exit;
+                break;
         }
 
         $orderTotalAmount = $this->getOrderTotalAmount($order);

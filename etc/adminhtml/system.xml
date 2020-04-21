@@ -28,6 +28,13 @@
                 <field id="alipay_desc" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Alipay Description</label>
                 </field>
+                <field id="ideal_active" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>iDeal Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ideal_desc" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>iDeal Description</label>
+                </field>
                 <field id="pending_status" translate="label" type="select" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>New Order Status</label>
                     <source_model>YaBandPay\Payment\Model\Config\Source\Order\Status\Order</source_model>

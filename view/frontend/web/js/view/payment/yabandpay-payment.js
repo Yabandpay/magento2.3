@@ -34,6 +34,15 @@ define(
             );
         }
 
+        if (window.checkoutConfig.payment.yabandpay_ideal.isActive) {
+            rendererList.push(
+                {
+                    type: 'yabandpay_ideal',
+                    component: 'YaBandPay_Payment/js/view/payment/method-renderer/yabandpay_ideal-method'
+                }
+            );
+        }
+
         /** Add view logic here if needed */
         return Component.extend({});
     }

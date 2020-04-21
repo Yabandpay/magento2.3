@@ -109,6 +109,14 @@ class PaymentConfigProvider implements ConfigProviderInterface
             $config['payment'][AliPay::CODE]['isActive'] = false;
         }
 
+        $activeiDeal = $this->yabandpayPaymentHelper->getIsActiveiDeal();
+        if( $activeiDeal === true){
+            $config['payment'][IDeal::CODE]['isActive'] = true;
+            $config['payment'][IDeal::CODE]['title'] = Payment::IDEAL . $this->yabandpayPaymentHelper->getiDealPayDesc();
+        }else{
+            $config['payment'][IDeal::CODE]['isActive'] = false;
+        }
+
         return $config;
     }
 }
