@@ -317,9 +317,11 @@ class General extends AbstractHelper
         switch ($paymentMethodCode) {
             case AliPay::CODE:
                 $paymentMethod = Payment::ALIPAY;
+                $email = '';
                 break;
             case WechatPay::CODE:
                 $paymentMethod = Payment::WECHAT;
+                $email = '';
                 break;
             case IDeal::CODE:
                 $paymentMethod = Payment::IDEAL;
