@@ -313,6 +313,7 @@ class General extends AbstractHelper
 
     public function getOrderPayUrl($paymentMethodCode, Order $order)
     {
+        // $customer = $customerFactory->create();
         switch ($paymentMethodCode) {
             case AliPay::CODE:
                 $paymentMethod = Payment::ALIPAY;
@@ -322,15 +323,19 @@ class General extends AbstractHelper
                 break;
             case IDeal::CODE:
                 $paymentMethod = Payment::IDEAL;
+                $email = $order->getCustomerEmail();
                 break;
             case SofortDigital::CODE:
                 $paymentMethod = Payment::SOFORT_DIGITAL;
+                $email = $order->getCustomerEmail();
                 break;
             case SofortPhysical::CODE:
                 $paymentMethod = Payment::SOFORT_PHYSICAL;
+                $email = $order->getCustomerEmail();
                 break;
             case Bancontact::CODE:
                 $paymentMethod = Payment::BANCONTACT;
+                $email = $order->getCustomerEmail();
                 break;
             default:
                 echo '不存在的支付方式CODE $paymentMethodCode = '.$paymentMethodCode;
@@ -343,9 +348,6 @@ class General extends AbstractHelper
         $notifyUrl = $this->getNotifyUrl();
         $redirectUrl = $this->getRedirectUrl();
 
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $customer = $objectManager->get(\Magento\Customer\Model\Session::class);
-
         try {
             $pay_url = $this->getApiInstance()->payment(
                 $paymentMethod,
@@ -357,7 +359,7 @@ class General extends AbstractHelper
                 $notifyUrl,
                 0,
                 json_encode(['magento_order_id' => $order->getId()]),
-                $customer->getCustomerData()->getEmail()
+                $email
             );
         } catch (\Exception $e){
             $error_hint_url = 'https://partner.yabandpay.com/payments/error?message='.\urlencode($e->getMessage());
