@@ -317,27 +317,21 @@ class General extends AbstractHelper
         switch ($paymentMethodCode) {
             case AliPay::CODE:
                 $paymentMethod = Payment::ALIPAY;
-                $email = '';
                 break;
             case WechatPay::CODE:
                 $paymentMethod = Payment::WECHAT;
-                $email = '';
                 break;
             case IDeal::CODE:
                 $paymentMethod = Payment::IDEAL;
-                $email = $order->getCustomerEmail();
                 break;
             case SofortDigital::CODE:
                 $paymentMethod = Payment::SOFORT_DIGITAL;
-                $email = $order->getCustomerEmail();
                 break;
             case SofortPhysical::CODE:
                 $paymentMethod = Payment::SOFORT_PHYSICAL;
-                $email = $order->getCustomerEmail();
                 break;
             case Bancontact::CODE:
                 $paymentMethod = Payment::BANCONTACT;
-                $email = $order->getCustomerEmail();
                 break;
             default:
                 echo '不存在的支付方式CODE $paymentMethodCode = '.$paymentMethodCode;
@@ -361,7 +355,7 @@ class General extends AbstractHelper
                 $notifyUrl,
                 0,
                 json_encode(['magento_order_id' => $order->getId()]),
-                $email
+                $order->getCustomerEmail()
             );
         } catch (\Exception $e){
             $error_hint_url = 'https://partner.yabandpay.com/payments/error?message='.\urlencode($e->getMessage());
