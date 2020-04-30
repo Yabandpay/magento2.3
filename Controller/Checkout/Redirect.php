@@ -58,24 +58,24 @@ class Redirect extends Controller
                 $this->_redirect('checkout/cart');
                 return;
             }
-            echo 'if(!$order){';
             $payment = $order->getPayment();
             if(!isset($payment) || empty($payment)){
                 $this->yaBandWechatPayHelper->addTolog('error', 'Order Payment is empty');
                 $this->_redirect('checkout/cart');
                 return;
             }
-            echo 'if(!isset($payment) || empty($payment)){';
             $method = $order->getPayment()->getMethod();
             $methodInstance = $this->paymentHelper->getMethodInstance($method);
             if($methodInstance instanceof \YaBandPay\Payment\Model\AbstractPayment){
-                echo 'if($methodInstance instanceof \YaBandPay\Payment\Model\AbstractPayment){';
                 $redirectUrl = $methodInstance->startTransaction($order);
+                echo '$redirectUrl = $methodInstance->startTransaction($order);';
                 /**
                  * @var Http $response
                  */
                 $response = $this->getResponse();
+                echo '$response = $this->getResponse();';
                 $response->setRedirect($redirectUrl);
+                echo '$response->setRedirect($redirectUrl)';
             }else{
                 echo '}else{';
                 $msg = __('Paymentmethod not found.');
@@ -85,12 +85,17 @@ class Redirect extends Controller
                 $this->_redirect('checkout/cart');
             }
         }catch(\Exception $e){
+            echo '}catch(\Exception $e){';
             $this->messageManager->addExceptionMessage(
                 $e, __($e->getMessage())
             );
+            echo 'addExceptionMessage';
             $this->yaBandWechatPayHelper->addTolog('error', $e->getMessage());
+            echo ' ->addTolog';
             $this->checkoutSession->restoreQuote();
+            echo ' restoreQuote()';
             $this->_redirect('checkout/cart');
+            echo ' _redirect';
         }
     }
 }
