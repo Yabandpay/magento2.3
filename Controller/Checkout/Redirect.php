@@ -58,15 +58,18 @@ class Redirect extends Controller
                 $this->_redirect('checkout/cart');
                 return;
             }
+            echo 'if(!$order){';
             $payment = $order->getPayment();
             if(!isset($payment) || empty($payment)){
                 $this->yaBandWechatPayHelper->addTolog('error', 'Order Payment is empty');
                 $this->_redirect('checkout/cart');
                 return;
             }
+            echo 'if(!isset($payment) || empty($payment)){';
             $method = $order->getPayment()->getMethod();
             $methodInstance = $this->paymentHelper->getMethodInstance($method);
             if($methodInstance instanceof \YaBandPay\Payment\Model\AbstractPayment){
+                echo 'if($methodInstance instanceof \YaBandPay\Payment\Model\AbstractPayment){';
                 $redirectUrl = $methodInstance->startTransaction($order);
                 /**
                  * @var Http $response
@@ -74,6 +77,7 @@ class Redirect extends Controller
                 $response = $this->getResponse();
                 $response->setRedirect($redirectUrl);
             }else{
+                echo '}else{';
                 $msg = __('Paymentmethod not found.');
                 $this->messageManager->addErrorMessage($msg);
                 $this->yaBandWechatPayHelper->addTolog('error', $msg);
