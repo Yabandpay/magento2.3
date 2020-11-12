@@ -34,6 +34,8 @@ use YaBandPay\Payment\Model\Sofort;
 use YaBandPay\Payment\Model\SofortDigital;
 use YaBandPay\Payment\Model\SofortPhysical;
 use YaBandPay\Payment\Model\WechatPay;
+use YaBandPay\Payment\Model\Visa;
+use YaBandPay\Payment\Model\MasterCard;
 
 /**
  * Class General
@@ -62,6 +64,10 @@ class General extends AbstractHelper
     const YABANDPAY_SOFORT_PHYSICAL_DESC = 'payment/' . self::MODULE_CODE . '/sofort_physical_desc';
     const YABANDPAY_BANCONTACT_ACTIVE = 'payment/' . self::MODULE_CODE . '/bancontact_active';
     const YABANDPAY_BANCONTACT_DESC = 'payment/' . self::MODULE_CODE . '/bancontact_desc';
+    const YABANDPAY_VISA_ACTIVE = 'payment/' . self::MODULE_CODE . '/visa_active';
+    const YABANDPAY_VISA_DESC = 'payment/' . self::MODULE_CODE . '/visa_desc';
+    const YABANDPAY_MASTERCARD_ACTIVE = 'payment/' . self::MODULE_CODE . '/mastercard_active';
+    const YABANDPAY_MASTERCARD_DESC = 'payment/' . self::MODULE_CODE . '/mastercard_desc';
     const YABANDPAY_CURRENCY = 'payment/' . self::MODULE_CODE . '/currency';
     const YABANDPAY_FEE = 'payment/' . self::MODULE_CODE . '/fee';
     const YABANDPAY_AUTO_EMAIL = 'payment/' . self::MODULE_CODE . '/auto_send_email';
@@ -269,6 +275,26 @@ class General extends AbstractHelper
         return ' ' . $this->getStoreConfig(self::YABANDPAY_BANCONTACT_DESC);
     }
 
+    public function getIsActiveVisa()
+    {
+        return (bool)$this->getStoreConfig(self::YABANDPAY_VISA_ACTIVE);
+    }
+
+    public function getVisaPayDesc()
+    {
+        return ' ' . $this->getStoreConfig(self::YABANDPAY_VISA_DESC);
+    }
+
+    public function getIsActiveMasterCard()
+    {
+        return (bool)$this->getStoreConfig(self::YABANDPAY_MASTERCARD_ACTIVE);
+    }
+
+    public function getMasterCardPayDesc()
+    {
+        return ' ' . $this->getStoreConfig(self::YABANDPAY_MASTERCARD_DESC);
+    }
+
     public function getPayCurrency()
     {
         return $this->getStoreConfig(self::YABANDPAY_CURRENCY);
@@ -332,6 +358,12 @@ class General extends AbstractHelper
                 break;
             case Bancontact::CODE:
                 $paymentMethod = Payment::BANCONTACT;
+                break;
+            case Visa::CODE:
+                $paymentMethod = Payment::VISA;
+                break;
+            case MasterCard::CODE:
+                $paymentMethod = Payment::MASTERCARD;
                 break;
             default:
                 echo '不存在的支付方式CODE $paymentMethodCode = '.$paymentMethodCode;

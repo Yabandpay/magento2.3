@@ -141,6 +141,22 @@ class PaymentConfigProvider implements ConfigProviderInterface
             $config['payment'][Bancontact::CODE]['isActive'] = false;
         }
 
+        $activeVisa = $this->yabandpayPaymentHelper->getIsActiveVisa();
+        if( $activeVisa === true){
+            $config['payment'][Visa::CODE]['isActive'] = true;
+            $config['payment'][Visa::CODE]['title'] = Payment::VISA . $this->yabandpayPaymentHelper->getVisaPayDesc();
+        }else{
+            $config['payment'][Visa::CODE]['isActive'] = false;
+        }
+
+        $activeMasterCard = $this->yabandpayPaymentHelper->getIsActiveMasterCard();
+        if( $activeMasterCard === true){
+            $config['payment'][MasterCard::CODE]['isActive'] = true;
+            $config['payment'][MasterCard::CODE]['title'] = Payment::MASTERCARD . $this->yabandpayPaymentHelper->getMasterCardPayDesc();
+        }else{
+            $config['payment'][MasterCard::CODE]['isActive'] = false;
+        }
+
         return $config;
     }
 }

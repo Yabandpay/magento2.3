@@ -70,6 +70,24 @@ define(
             );
         }
 
+        if (window.checkoutConfig.payment.yabandpay_visa.isActive) {
+            rendererList.push(
+                {
+                    type: 'yabandpay_visa',
+                    component: 'YaBandPay_Payment/js/view/payment/method-renderer/yabandpay_visa-method'
+                }
+            );
+        }
+
+        if (window.checkoutConfig.payment.yabandpay_mastercard.isActive) {
+            rendererList.push(
+                {
+                    type: 'yabandpay_mastercard',
+                    component: 'YaBandPay_Payment/js/view/payment/method-renderer/yabandpay_mastercard-method'
+                }
+            );
+        }
+
         /** Add view logic here if needed */
         return Component.extend({});
     }

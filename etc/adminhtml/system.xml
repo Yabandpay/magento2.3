@@ -56,6 +56,20 @@
                 <field id="bancontact_desc" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Bancontact Description</label>
                 </field>
+                <field id="visa_active" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Visa Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="visa_desc" translate="label" type="text" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Visa Description</label>
+                </field>
+                <field id="mastercard_active" translate="label" type="select" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>MasterCard Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="mastercard_desc" translate="label" type="text" sortOrder="33" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MasterCard Description</label>
+                </field>
                 <field id="pending_status" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>New Order Status</label>
                     <source_model>YaBandPay\Payment\Model\Config\Source\Order\Status\Order</source_model>
