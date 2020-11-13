@@ -140,7 +140,7 @@
                 <can_capture>1</can_capture>
                 <can_use_checkout>1</can_use_checkout>
                 <sort_order>1</sort_order>
-                <title>MasterCard</title>
+                <title>Mastercard</title>
                 <payment_action>authorize</payment_action>
                 <model>YaBandPay\Payment\Model\MasterCard</model>
             </yabandpay_mastercard>
