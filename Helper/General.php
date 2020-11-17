@@ -386,7 +386,10 @@ class General extends AbstractHelper
                 $redirectUrl,
                 $notifyUrl,
                 0,
-                json_encode(['magento_order_id' => $order->getId()]),
+                json_encode([
+                    'magento_order_id' => $order->getId(),
+                    'plugin_version' => 'magento2.3-yabandpay1.3.5'
+                ]),
                 $order->getCustomerEmail()
             );
         } catch (\Exception $e){
