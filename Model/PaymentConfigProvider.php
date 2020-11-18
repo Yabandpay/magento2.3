@@ -157,6 +157,22 @@ class PaymentConfigProvider implements ConfigProviderInterface
             $config['payment'][MasterCard::CODE]['isActive'] = false;
         }
 
+        $activePayPal = $this->yabandpayPaymentHelper->getIsActivePayPal();
+        if( $activePayPal === true){
+            $config['payment'][PayPal::CODE]['isActive'] = true;
+            $config['payment'][PayPal::CODE]['title'] = 'PayPal' . $this->yabandpayPaymentHelper->getPayPalPayDesc();
+        }else{
+            $config['payment'][PayPal::CODE]['isActive'] = false;
+        }
+
+        $activeUnionpay = $this->yabandpayPaymentHelper->getIsActiveUnionpay();
+        if( $activeUnionpay === true){
+            $config['payment'][Unionpay::CODE]['isActive'] = true;
+            $config['payment'][Unionpay::CODE]['title'] = Payment::UNIONPAY . $this->yabandpayPaymentHelper->getUnionpayPayDesc();
+        }else{
+            $config['payment'][Unionpay::CODE]['isActive'] = false;
+        }
+
         return $config;
     }
 }

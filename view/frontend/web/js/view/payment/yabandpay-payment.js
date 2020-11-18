@@ -88,6 +88,24 @@ define(
             );
         }
 
+        if (window.checkoutConfig.payment.yabandpay_paypal.isActive) {
+            rendererList.push(
+                {
+                    type: 'yabandpay_paypal',
+                    component: 'YaBandPay_Payment/js/view/payment/method-renderer/yabandpay_paypal-method'
+                }
+            );
+        }
+
+        if (window.checkoutConfig.payment.yabandpay_unionpay.isActive) {
+            rendererList.push(
+                {
+                    type: 'yabandpay_unionpay',
+                    component: 'YaBandPay_Payment/js/view/payment/method-renderer/yabandpay_unionpay-method'
+                }
+            );
+        }
+
         /** Add view logic here if needed */
         return Component.extend({});
     }

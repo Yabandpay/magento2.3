@@ -36,6 +36,8 @@ use YaBandPay\Payment\Model\SofortPhysical;
 use YaBandPay\Payment\Model\WechatPay;
 use YaBandPay\Payment\Model\Visa;
 use YaBandPay\Payment\Model\MasterCard;
+use YaBandPay\Payment\Model\PayPal;
+use YaBandPay\Payment\Model\Unionpay;
 
 /**
  * Class General
@@ -68,6 +70,10 @@ class General extends AbstractHelper
     const YABANDPAY_VISA_DESC = 'payment/' . self::MODULE_CODE . '/visa_desc';
     const YABANDPAY_MASTERCARD_ACTIVE = 'payment/' . self::MODULE_CODE . '/mastercard_active';
     const YABANDPAY_MASTERCARD_DESC = 'payment/' . self::MODULE_CODE . '/mastercard_desc';
+    const YABANDPAY_PAYPAL_ACTIVE = 'payment/' . self::MODULE_CODE . '/paypal_active';
+    const YABANDPAY_PAYPAL_DESC = 'payment/' . self::MODULE_CODE . '/paypal_desc';
+    const YABANDPAY_UNIONPAY_ACTIVE = 'payment/' . self::MODULE_CODE . '/unionpay_active';
+    const YABANDPAY_UNIONPAY_DESC = 'payment/' . self::MODULE_CODE . '/unionpay_desc';
     const YABANDPAY_CURRENCY = 'payment/' . self::MODULE_CODE . '/currency';
     const YABANDPAY_FEE = 'payment/' . self::MODULE_CODE . '/fee';
     const YABANDPAY_AUTO_EMAIL = 'payment/' . self::MODULE_CODE . '/auto_send_email';
@@ -295,6 +301,27 @@ class General extends AbstractHelper
         return ' ' . $this->getStoreConfig(self::YABANDPAY_MASTERCARD_DESC);
     }
 
+    public function getIsActivePayPal()
+    {
+        return (bool)$this->getStoreConfig(self::YABANDPAY_PAYPAL_ACTIVE);
+    }
+
+    public function getPayPalPayDesc()
+    {
+        return ' ' . $this->getStoreConfig(self::YABANDPAY_PAYPAL_DESC);
+    }
+
+    
+    public function getIsActiveUnionPay()
+    {
+        return (bool)$this->getStoreConfig(self::YABANDPAY_UNIONPAY_ACTIVE);
+    }
+
+    public function getUnionPayPayDesc()
+    {
+        return ' ' . $this->getStoreConfig(self::YABANDPAY_UNIONPAY_DESC);
+    }
+
     public function getPayCurrency()
     {
         return $this->getStoreConfig(self::YABANDPAY_CURRENCY);
@@ -364,6 +391,12 @@ class General extends AbstractHelper
                 break;
             case MasterCard::CODE:
                 $paymentMethod = Payment::MASTERCARD;
+                break;
+            case PayPal::CODE:
+                    $paymentMethod = Payment::PAYPAL;
+                    break;
+            case Unionpay::CODE:
+                $paymentMethod = Payment::UNIONPAY;
                 break;
             default:
                 echo '不存在的支付方式CODE $paymentMethodCode = '.$paymentMethodCode;

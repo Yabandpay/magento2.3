@@ -32,5 +32,11 @@
         <method name="yabandpay_mastercard">
             <allow_multiple_address>1</allow_multiple_address>
         </method>
+        <method name="yabandpay_paypal">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
+        <method name="yabandpay_unionpay">
+            <allow_multiple_address>1</allow_multiple_address>
+        </method>
     </methods>
 </payment>
