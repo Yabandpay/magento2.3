@@ -168,7 +168,7 @@ class PaymentConfigProvider implements ConfigProviderInterface
         $activeUnionpay = $this->yabandpayPaymentHelper->getIsActiveUnionpay();
         if( $activeUnionpay === true){
             $config['payment'][Unionpay::CODE]['isActive'] = true;
-            $config['payment'][Unionpay::CODE]['title'] = Payment::UNIONPAY . $this->yabandpayPaymentHelper->getUnionpayPayDesc();
+            $config['payment'][Unionpay::CODE]['title'] = 'UnionPay' . $this->yabandpayPaymentHelper->getUnionpayPayDesc();
         }else{
             $config['payment'][Unionpay::CODE]['isActive'] = false;
         }
