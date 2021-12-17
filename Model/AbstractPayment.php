@@ -249,7 +249,7 @@ abstract class AbstractPayment extends AbstractMethod
     {
         try{
             $order_increment_id = (json_decode($orderInfo['demo']))->magento_order_id;
-
+            $this->yaBandWechatPayHelper->addTolog('info', 'processTransaction Start');
             $order = $this->order->load($order_increment_id);
             if(empty($order)){
                 $msg = [ 'error' => true, 'msg' => __('Order not found') ];
@@ -257,13 +257,15 @@ abstract class AbstractPayment extends AbstractMethod
                 return $msg;
             }
             $status = $orderInfo['state'];
-            if($status == YaBandWechatPayHelper::PAY_PAID && $order->getStatus() !== Payment::PAY_PROCESSING){
+            if($status == YaBandWechatPayHelper::PAY_PAID && $order->getStatus() !== $order->getState() ){
                 $processingStatus = $this->yaBandWechatPayHelper->getStatusProcessing();
                 $this->yaBandWechatPayHelper->addTolog('info', 'Processing Status:' . var_export($processingStatus, true));
                 $order->setStatus($processingStatus)->save();
                 $order = $this->order->load($order_increment_id);
                 if($this->yaBandWechatPayHelper->getAuthInvoice()){
-                    $this->autoBuildOrderInvoice($order);
+                    if($order->canInvoice()){
+                        $this->autoBuildOrderInvoice($order);
+                    }
                 }
 
                 $msg = [ 'success' => true, 'status' => 'paid', 'order_id' => $orderInfo['order_id'] ];
